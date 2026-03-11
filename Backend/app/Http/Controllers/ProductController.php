@@ -1,5 +1,5 @@
-<!-- app/Http/Controllers/ProductController.php -->
- 
+app/Http/Controllers/ProductController.php
+
 <?php
 namespace App\Http\Controllers;
 
