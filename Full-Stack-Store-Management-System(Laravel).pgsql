@@ -4,8 +4,9 @@ Full-Stack-Store-Management-System(SMS)
 │   ├── app/                                                          # Application-specific code
 │   │   ├── Console/
 │   │   ├── Exceptions/
+│   │   │   └── Handler.php
 │   │   ├── Http/                                                     # API route definitions                         
-│   │   │   ├── AuthMiddleware.php
+│   │   │   ├── Controllers/
 │   │   │   │   ├── AuthController.php
 │   │   │   │   ├── ProductController.php
 │   │   │   │   ├── CategoryController.php
@@ -17,11 +18,18 @@ Full-Stack-Store-Management-System(SMS)
 │   │   │   ├── Middleware/
 │   │   │   │   ├── AuthMiddlware.php
 │   │   │   │   ├── RoleMiddlware.php
-│   │   │   │	└── HandleErrors.php
+│   │   │   │	└── ErrorHandler.php
 │   │   │   └── request/                                                     
-│   │   │       ├── CreateProductRequest.php
-│   │   │       ├── UpdateProductRequest.php
-│   │   │   	└── ...  
+│   │   │       ├── Auth/
+│   │   │       │   ├── LoginRequest.php
+│   │   │       │	└── RegisterRequest.php
+│   │   │       ├── Product/
+│   │   │       │   ├── CreateProductRequest.php
+│   │   │       │	└── UpdateProductRequest.php
+│   │   │       ├── Sale/
+│   │   │       │	└── createSaleRequest.php
+│   │   │   	└── Purchase/
+│   │   │        	└── CreatePurchaseRequest.php
 │   │   ├── Models/                                                    # Eloquent models
 │   │   │   ├── User.php                                         
 │   │   │   ├── Product.php
@@ -36,32 +44,62 @@ Full-Stack-Store-Management-System(SMS)
 │   │   │   ├── AuthService.php
 │   │   │   ├── ProductService.php
 │   │   │   ├── SaleService.php
-│   │   │   ├── SaleService.php
-│   │   │   ├──                        
-│   │   │   └──           
-│   │   └── Providers/ 
-│   │       ├── EmailServiceProvider.php
-│   │       ├── SMSServiceProvider.php
-│   │       └── PaymentServiceProvider.php
+│   │   │   ├── PurchaseService.php
+│   │   │   ├── CustomerService.php                       
+│   │   │   ├── SupplierService.php
+│   │   │   └── DashboardService.php          
+│   │   ├── Repositories/
+│   │   │   ├── ProductRepository.php
+│   │   │   ├── SaleRepositories.php
+│   │   │   ├── PurchaseRepository.php                       
+│   │   │   ├── CustomerRepository.php
+│   │   │   └── SupplierRepository.php
+│   │   ├── Providers/
+│   │   │   ├── AppServiceProvider.php
+│   │   │   ├── EmailServiceProvider.php                       
+│   │   │   ├── SmsServiceProvider.php
+│   │   │   └── PaymentServiceProvider.php
+│   │   └── Helpers/ 
+│   │       ├── ResponseHelper.php
+│   │       ├── ValidatorHelper.php
+│   │       └── Constants.php
 │   ├── bootstrap/    
 │   │   └── app.php                                         
 │   ├── config/       
 │   │   ├── app.php
+│   │   ├── auth.php
 │   │   ├── database.php
 │   │   └── services.php
 │   ├── database/                                                    # Laravel migration
+│   │   ├── factories/
 │   │   ├── migrations/
-│   │   ├── seeders/
-│   │   └── factories/
+│   │   │   ├── create_users_table.php
+│   │   │   ├── create_categories_table.php
+│   │   │   ├── create_products_table.php
+│   │   │   ├── create_sales_table.php
+│   │   │   ├── create_sale_items_table.php
+│   │   │   ├── create_purcahses_table.php
+│   │   │   ├── create_purcahse_items_table.php
+│   │   │   ├── create_customers_table.php
+│   │   │   └── create_suppliers_table.php
+│   │   └── seeders/
+│   │       ├── DatabaseSeeder.php
+│   │       ├── UserSeeder.php
+│   │       └── ProductSeeder.php
 │   ├── routes/       
-│   │   └── api.php                                                  # API routes (like FastAPI routers)
+│   │   ├── api.php
+│   │   └── web.php                                                  # API routes (like FastAPI routers)
 │   ├── tests/       
 │   │   ├── Feature/
+│   │   │   ├── AuthTest.php
+│   │   │   ├── ProductTest.php
+│   │   │   └── SaleTest.php
 │   │   └── Unit/                                                 
 │   ├── .env                                                         # Environment variables
 │   ├── artisan                                                      # Laravel CLI
 │   ├── composer.json                                                # Dependencies
 │   ├── composer.lock
+│   ├── .gitignore
 │   └── README.md                                                   
 │
 │=>public/index.php => Router => api.php => v1/products.php => Middleware(cors -> auth -> rule) => ProductController => Service => Model => Response(JSON)
