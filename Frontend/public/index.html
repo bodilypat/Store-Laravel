@@ -1,17 +1,51 @@
-<!-- index.html -->
+<!-- Frontend/public/index.html # Store Management System -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS Node - Admin Dashboard</title>
-    <!-- Optional: Include a favicon -->
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <!-- Optional: Include Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Store Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <!-- The React app will be injected into the #root div -->
+    <header>
+        <h1>Store Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#orders">Orders</a></li>
+                <li><a href="#customers">Customers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Welcome to the Store Management System. Use the navigation above to manage your store.</p>
+        </section>
+
+        <section id="products">
+            <h2>Products</h2>
+            <!-- Product management interface will go here -->
+        </section>
+
+        <section id="orders">
+            <h2>Orders</h2>
+            <!-- Order management interface will go here -->
+        </section>
+
+        <section id="customers">
+            <h2>Customers</h2>
+            <!-- Customer management interface will go here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Store Management System. All rights reserved.</p>
+    </footer>
 </body>
 </html>
