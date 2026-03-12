@@ -8,18 +8,18 @@
 | Authentication & Authorization
 |--------------------------------------------------------
  --> */
-/* src/components/protected/RoleBaseRoute.js */
+/* src/components/protected/ProtectedRoute.js */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const RoleBaseRoute = ({ component: Component, allowedRoles, ...rest }) => {
-    const { isAuthenticated, user } = useAuth();
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+    const { isAuthenticated } = useAuth();
     return (
         <Route
             {...rest}
             render={props =>
-                isAuthenticated && allowedRoles.includes(user.role) ? (
+                isAuthenticated ? (
                     <Component {...props} />
                 ) : (
                     <Redirect to="/login" />
@@ -29,6 +29,8 @@ const RoleBaseRoute = ({ component: Component, allowedRoles, ...rest }) => {
     );
 };
 
-export default RoleBaseRoute;
+export default ProtectedRoute;
+
+
 
 
