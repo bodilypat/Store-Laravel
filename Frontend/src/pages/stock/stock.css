@@ -1,0 +1,229 @@
+/* <!--
+|----------------------Store Management System------------------ 
+| Stock Management
+| -- Track current stock levels
+| -- Low Stock alerts
+| -- Stack Adjustment
+| -- Inventory history
+| -- Real- time stock updates 
+| -- Stock reporting and analytics with charts and graphs
+| -- Barcode scanning for stock management
+| -- multi-warehouse stock management
+| -- automatic restock alerts
+| -- integration with sales and purchase modules for accurate stock tracking
+|--------------------------------------------------------
+ --> */
+/* 
+-- Stock css styles
+-- src/pages/stock/Stock.CSS 
+*/
+
+/* StockList */
+.stock-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.stock-list h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.stock-table th, .stock-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.stock-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.stock-table tr:hover {
+    background-color: #f1f1f1;
+}
+.stock-table .low-stock {
+    background-color: #ffcccc;
+}
+.stock-table .out-of-stock {
+    background-color: #ff9999;
+}
+.stock-table .in-stock {
+    background-color: #ccffcc;
+}
+.stock-table .action-buttons {
+    display: flex;
+    gap: 10px;
+}
+.stock-table .action-buttons button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.stock-table .action-buttons .edit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+.stock-table .action-buttons .delete-button {
+    background-color: #f44336;
+    color: white;
+}
+.stock-table .action-buttons .view-button {
+    background-color: #2196F3;
+    color: white;
+}
+.stock-table .action-buttons .edit-button:hover {
+    background-color: #45a049;
+}
+.stock-table .action-buttons .delete-button:hover {
+    background-color: #e53935;
+}
+.stock-table .action-buttons .view-button:hover {
+    background-color: #1e88e5;
+}
+.stock-table .status {
+    font-weight: bold;
+}
+.stock-table .status.low {
+    color: #ff0000;
+}
+
+.stock-table .status.out {
+    color: #ff0000;
+}
+.stock-table .status.in {
+    color: #008000;
+}
+
+/* UpdateStock */
+.update-stock {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.update-stock h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.update-stock form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.update-stock form label {
+    font-weight: bold;
+}
+.update-stock form input, .update-stock form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.update-stock form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+.update-stock form button:hover {
+    background-color: #45a049;
+}
+
+/* LowStock */
+.low-stock {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.low-stock h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.low-stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.low-stock-table th, .low-stock-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.low-stock-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.low-stock-table tr:hover {
+    background-color: #f1f1f1;
+}
+.low-stock-table .action-buttons {
+    display: flex;
+    gap: 10px;
+}
+.low-stock-table .action-buttons button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.low-stock-table .action-buttons .view-button {
+    background-color: #2196F3;
+    color: white;
+}
+.low-stock-table .action-buttons .view-button:hover {
+    background-color: #1e88e5;
+}
+.low-stock-table .status {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+/* StockHistory */
+.stock-history {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.stock-history h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.stock-history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.stock-history-table th, .stock-history-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.stock-history-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.stock-history-table tr:hover {
+    background-color: #f1f1f1;
+}
+.stock-history-table .action-buttons {
+    display: flex;
+    gap: 10px;
+}
+.stock-history-table .action-buttons button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.stock-history-table .action-buttons .view-button {
+    background-color: #2196F3;
+    color: white;
+}
+.stock-history-table .action-buttons .view-button:hover {
+    background-color: #1e88e5;
+}
+.stock-history-table .status {
+    font-weight: bold;
+}
+.stock-history-table .status.added {
+    color: #008000;
+}
+.stock-history-table .status.removed {
+    color: #ff0000;
+}
+.stock-history-table .status.adjusted {
+    color: #ffa500;
+}
+
+

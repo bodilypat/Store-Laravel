@@ -8,47 +8,49 @@
 | -- Real- time stock updates 
 | -- Stock reporting and analytics with charts and graphs
 | -- Barcode scanning for stock management
-| --  multi-warehouse stock management
+| -- multi-warehouse stock management
 | -- automatic restock alerts
 | -- integration with sales and purchase modules for accurate stock tracking
 |--------------------------------------------------------
  --> */
-/* * view stock  #src/pages/stock/StockList.jsx  */
+/* 
+-- Display products that need restocking
+-- src/pages/stock/LowStock.jsx  
+*/
 
 import React, { useState, useEffect } from 'react';
-import { getStockList } from '../../services/stockService';
-import './StockList.css';
+import { getLowStockProducts } from '../../services/stockService';
+import './LowStock.css';
 
-const StockList = () => {
-    const [stockList, setStockList] = useState([]);
-
+const LowStock = () => {
+    const [lowStockProducts, setLowStockProducts] = useState([]);
     useEffect(() => {
-        getStockList()
+        getLowStockProducts()
             .then(response => {
-                setStockList(response.data);
+                setLowStockProducts(response.data);
             })
             .catch(error => {
-                console.error("There was an error fetching the stock list!", error);
+                console.error("There was an error fetching low stock products!", error);
             });
     }, []);
 
     return (
-        <div className="stock-list">
-            <h1>Stock List</h1>
+        <div className="low-stock">
+            <h1>Low Stock Products</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Product Name</th>
                         <th>Current Stock</th>
-                        <th>Low Stock Alert</th>
+                        <th>Low Stock Threshold</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {stockList.map(stock => (
-                        <tr key={stock.id}>
-                            <td>{stock.productName}</td>
-                            <td>{stock.currentStock}</td>
-                            <td>{stock.currentStock < stock.lowStockThreshold ? 'Yes' : 'No'}</td>
+                    {lowStockProducts.map(product => (
+                        <tr key={product.id}>
+                            <td>{product.productName}</td>
+                            <td>{product.currentStock}</td>
+                            <td>{product.lowStockThreshold}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -57,7 +59,7 @@ const StockList = () => {
     );
 };
 
-export default StockList;
+export default LowStock;
 
 
 
