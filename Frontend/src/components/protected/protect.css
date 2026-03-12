@@ -1,0 +1,32 @@
+/* <!--
+|----------------------Store Management System------------------ 
+| Product & Inventory Management
+| Sales & Billing(POS)
+| Customer Management 
+| Supplier Management
+| Reports & Analytics
+| Authentication & Authorization
+| User Interface & Experience
+| components protected: ProtectedRoute, RoleBasedRoute
+| CSS Style: ProtectedRoute, RoleBasedRoute
+|--------------------------------------------------------
+ --> */
+/* src/components/protected/protect.css */
+
+/* Protected Route Styles */
+.protected-route {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    }
+/* Role-Based Route Styles */
+.role-based-route {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    }
+
