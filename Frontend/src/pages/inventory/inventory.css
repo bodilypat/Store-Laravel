@@ -1,0 +1,122 @@
+/*
+-- src/pages/Inventory/inventory.css 
+-- Inventory page
+-- Add Stock 
+-- StockHistory
+-- InventoryTable 
+-- inventory
+*/
+
+/* Inventory page */
+.inventory-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.inventory-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+.inventory-content {
+  display: flex;
+  gap: 20px;
+}
+/* Add Stock */
+.add-stock-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.add-stock-form h2 {
+  margin-bottom: 15px;
+}
+.add-stock-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.add-stock-form input,
+.add-stock-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.add-stock-form button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-stock-form button:hover {
+  background-color: #218838;
+}
+/* Stock History */
+.stock-history {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.stock-history h2 {
+  margin-bottom: 15px;
+}
+.stock-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.stock-history th,
+.stock-history td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+.stock-history th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.stock-history tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* Inventory Table */
+.inventory-table {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.inventory-table h2 {
+  margin-bottom: 15px;
+}
+.inventory-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.inventory-table th,
+.inventory-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+.inventory-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.inventory-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+
+
+
