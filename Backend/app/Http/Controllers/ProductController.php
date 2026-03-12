@@ -1,59 +1,42 @@
-app/Http/Controllers/ProductController.php
+<!-- //app/Http/Controllers/ProductController.php -->
 
-<?php
+<?php 
+
 namespace App\Http\Controllers;
-
-use App\Http\Requests\CreateProductRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Services\ProductService;
-use Illuminate\Http\JsonResponse;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    protected $productService;
-
-    public function __construct(ProductService $productService)
+    public function index()
     {
-        $this->productService = $productService;
-    }
-
-    public function index(): JsonResponse
-    {
-        $products = $this->productService->getAllProducts();
+        $products = Product::all();
         return response()->json($products);
     }
 
-    public function store(CreateProductRequest $request): JsonResponse
+    public function store(Request $request)
     {
-        $product = $this->productService->createProduct($request->validated());
+        $product = Product::create($request->all());
         return response()->json($product, 201);
     }
 
-    public function show(int $id): JsonResponse
+    public function show($id)
     {
-        $product = $this->productService->getProductById($id);
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
+        $product = Product::findOrFail($id);
         return response()->json($product);
     }
 
-    public function update(UpdateProductRequest $request, int $id): JsonResponse
+    public function update(Request $request, $id)
     {
-        $updatedProduct = $this->productService->updateProduct($id, $request->validated());
-        if (!$updatedProduct) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
-        return response()->json($updatedProduct);
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+        return response()->json($product);
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy($id)
     {
-        $deleted = $this->productService->deleteProduct($id);
-        if (!$deleted) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
-        return response()->json(['message' => 'Product deleted successfully']);
+        Product::destroy($id);
+        return response()->json(null, 204);
     }
 }
 
