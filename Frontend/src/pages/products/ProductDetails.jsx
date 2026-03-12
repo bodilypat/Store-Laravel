@@ -1,18 +1,23 @@
 /* <!--
 |----------------------Store Management System------------------ 
-| Product & Inventory Management
-| Sales & Billing(POS)
-| Customer Management 
-| Supplier Management
-| Reports & Analytics
-| Authentication & Authorization
+| Product Management
+| -- Add new products, product image upload, Barcode, including details like name, price, stock quantity, and category.
+| -- Edit existing product details.
+| -- Delete products from the inventory.
+| -- View a list of all products with their details.
+| -- Search and filter products 
+| -- Category management , Category hierarchy 
+| -- Stock Quantity tracking , Low-stack alerts
+| -- Product analytics 
 |--------------------------------------------------------
  --> */
 /* src/pages/products/ProductDetails.jsx */
+
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getProductById } from '../../services/productService';
 import './ProductDetails.css';
+
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -33,14 +38,14 @@ const ProductDetails = () => {
 
     return (
         <div className="product-details">
-            <h1>Product Details</h1>
-            <p><strong>Name:</strong> {product.name}</p>
+            <h1>{product.name}</h1>
             <p><strong>Price:</strong> ${product.price}</p>
             <p><strong>Stock:</strong> {product.stock}</p>
-            <Link to={`/products/edit/${product.id}`} className="edit-button">Edit</Link>
+            <p><strong>Category:</strong> {product.category}</p>
+            <p><strong>Description:</strong> {product.description}</p>
         </div>
     );
 }
-export default ProductDetails;
 
+export default ProductDetails;
 

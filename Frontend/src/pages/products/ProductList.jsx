@@ -1,15 +1,19 @@
 /* <!--
 |----------------------Store Management System------------------ 
-| Product & Inventory Management
-| Sales & Billing(POS)
-| Customer Management 
-| Supplier Management
-| Reports & Analytics
-| Authentication & Authorization
+| Product Management
+| -- Add new products, product image upload, Barcode, including details like name, price, stock quantity, and category.
+| -- Edit existing product details.
+| -- Delete products from the inventory.
+| -- View a list of all products with their details.
+| -- Search and filter products 
+| -- Category management , Category hierarchy 
+| -- Stock Quantity tracking , Low-stack alerts
+| -- Product analytics 
 |--------------------------------------------------------
  --> */
 /* src/pages/products/ProductList.jsx */
-import React, { useEffect, useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts, deleteProduct } from '../../services/productService';
 import './ProductList.css';
@@ -18,11 +22,10 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/products")
+        getProducts()
             .then(response => {
                 setProducts(response.data);
-            }
-            )
+            })
             .catch(error => {
                 console.error("There was an error fetching the products!", error);
             });
@@ -33,8 +36,7 @@ const ProductList = () => {
             deleteProduct(id)
                 .then(() => {
                     setProducts(products.filter(product => product.id !== id));
-                }
-                )
+                })
                 .catch(error => {
                     console.error("There was an error deleting the product!", error);
                 });
@@ -44,7 +46,7 @@ const ProductList = () => {
     return (
         <div className="product-list">
             <h1>Product List</h1>
-            <Link to="/products/add" className="add-product-button">Add Product</Link>
+            <Link to="/products/add" className="add-button">Add Product</Link>
             <table>
                 <thead>
                     <tr>
@@ -54,13 +56,14 @@ const ProductList = () => {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                     {products.map(product => (
                         <tr key={product.id}>
                             <td>{product.name}</td>
-                            <td>${product.price.toFixed(2)}</td>
+                            <td>${product.price}</td>
                             <td>{product.stock}</td>
                             <td>
+                                <Link to={`/products/${product.id}`} className="view-button">View</Link>
                                 <Link to={`/products/edit/${product.id}`} className="edit-button">Edit</Link>
                                 <button onClick={() => handleDelete(product.id)} className="delete-button">Delete</button>
                             </td>
@@ -70,6 +73,7 @@ const ProductList = () => {
             </table>
         </div>
     );
-};
+}
 
+export default ProductList;
 

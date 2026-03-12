@@ -1,14 +1,18 @@
 /* <!--
 |----------------------Store Management System------------------ 
-| Product & Inventory Management
-| Sales & Billing(POS)
-| Customer Management 
-| Supplier Management
-| Reports & Analytics
-| Authentication & Authorization
+| Product Management
+| -- Add new products, product image upload, Barcode, including details like name, price, stock quantity, and category.
+| -- Edit existing product details.
+| -- Delete products from the inventory.
+| -- View a list of all products with their details.
+| -- Search and filter products 
+| -- Category management , Category hierarchy 
+| -- Stock Quantity tracking , Low-stack alerts
+| -- Product analytics 
 |--------------------------------------------------------
  --> */
 /* src/pages/products/EditProduct.jsx */
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { getProductById, updateProduct } from '../../services/productService';

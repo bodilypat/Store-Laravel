@@ -1,18 +1,23 @@
 /* <!--
 |----------------------Store Management System------------------ 
-| Product & Inventory Management
-| Sales & Billing(POS)
-| Customer Management 
-| Supplier Management
-| Reports & Analytics
-| Authentication & Authorization
+| Product Management
+| -- Add new products, product image upload, Barcode, including details like name, price, stock quantity, and category.
+| -- Edit existing product details.
+| -- Delete products from the inventory.
+| -- View a list of all products with their details.
+| -- Search and filter products 
+| -- Category management , Category hierarchy 
+| -- Stock Quantity tracking , Low-stack alerts
+| -- Product analytics 
 |--------------------------------------------------------
  --> */
 /* src/pages/products/AddProduct.jsx */
+
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addProduct } from '../../services/productService';
 import './AddProduct.css';
+
 const AddProduct = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -25,11 +30,10 @@ const AddProduct = () => {
         addProduct(newProduct)
             .then(() => {
                 history.push('/products');
-            }
-        )
+            })
             .catch(error => {
                 console.error("There was an error adding the product!", error);
-        });
+            });
     };
 
     return (
@@ -70,4 +74,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
