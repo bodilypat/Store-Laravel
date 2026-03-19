@@ -7,84 +7,82 @@ Full-Stack-Store-Management-System(SMS)
 │   │   │   └── Handler.php
 │   │   ├── Http/                                                     # API route definitions                         
 │   │   │   ├── Controllers/
-│   │   │   │   ├── AuthController.php
-│   │   │   │   ├── ProductController.php
-│   │   │   │   ├── CategoryController.php
-│   │   │   │   ├── SaleController.php
-│   │   │   │   ├── PurchaseController.php
-│   │   │   │   ├── CustomerController.php
-│   │   │   │   ├── SupplierController.php
-│   │   │   │	└── DashboardController.php
-│   │   │   ├── Middleware/
-│   │   │   │   ├── AuthMiddlware.php
-│   │   │   │   ├── RoleMiddlware.php
-│   │   │   │	└── ErrorHandler.php
-│   │   │   └── request/                                                     
-│   │   │       ├── Auth/
-│   │   │       │   ├── LoginRequest.php
-│   │   │       │	└── RegisterRequest.php
-│   │   │       ├── Product/
-│   │   │       │   ├── CreateProductRequest.php
-│   │   │       │	└── UpdateProductRequest.php
-│   │   │       ├── Sale/
-│   │   │       │	└── createSaleRequest.php
-│   │   │   	└── Purchase/
-│   │   │        	└── CreatePurchaseRequest.php
+│   │   │   │   ├── API/
+│   │   │   │   │   ├── AuthController.php
+│   │   │   │   │   ├── ProductController.php
+│   │   │   │   │   ├── SaleController.php
+│   │   │   │   │   ├── CustomerController.php
+│   │   │   │   │	└── ReportController.php
+│   │   │   │	└── Admin/ (optional for dashboard)
+│   │   │   ├── Requests/
+│   │   │   │   ├── ProductRequest.php
+│   │   │   │   ├── SaleRequest.php
+│   │   │   │	└── CustomerRequest.php
+│   │   │   ├── Resources/
+│   │   │   │   ├── ProductResourcet.php
+│   │   │   │   ├── SaleResourece.php
+│   │   │   │	└── CustomerResource.php
+│   │   │   └── Middleware/                                                     
+│   │   │   	└── RoleMiddleware.php
 │   │   ├── Models/                                                    # Eloquent models
 │   │   │   ├── User.php                                         
+│   │   │   ├── Role.php
+│   │   │   ├── Permission.php
 │   │   │   ├── Product.php
-│   │   │   ├── Category.php
 │   │   │   ├── Sale.php
 │   │   │   ├── SaleItem.php
+│   │   │   ├── Customer.php
+│   │   │   ├── Supplier.php
 │   │   │   ├── Purchase.php
 │   │   │   ├── PurchaseItem.php
-│   │   │   ├── Customer.php
-│   │   │   └── Supplier.php
+│   │   │   ├── Store.php
+│   │   │   ├── StockMovement.php
+│   │   │   ├── Payment.php
+│   │   │   └── AuditLog.php
 │   │   ├── Services/                                                  # Business logic layer (optional)
-│   │   │   ├── AuthService.php
 │   │   │   ├── ProductService.php
 │   │   │   ├── SaleService.php
 │   │   │   ├── PurchaseService.php
-│   │   │   ├── CustomerService.php                       
-│   │   │   ├── SupplierService.php
-│   │   │   └── DashboardService.php          
+│   │   │   └── ReportService.php          
 │   │   ├── Repositories/
+│   │   │   ├── Interfaces/
+│   │   │   │   ├── ProductRepositoryInterface.php
+│   │   │   │   ├── SaleRepositoryInterface.php
+│   │   │   │	└── PurchaseRepositoryInterface.php
 │   │   │   ├── ProductRepository.php
-│   │   │   ├── SaleRepositories.php
-│   │   │   ├── PurchaseRepository.php                       
-│   │   │   ├── CustomerRepository.php
-│   │   │   └── SupplierRepository.php
-│   │   ├── Providers/
-│   │   │   ├── AppServiceProvider.php
-│   │   │   ├── EmailServiceProvider.php                       
-│   │   │   ├── SmsServiceProvider.php
-│   │   │   └── PaymentServiceProvider.php
-│   │   └── Helpers/ 
-│   │       ├── ResponseHelper.php
-│   │       ├── ValidatorHelper.php
-│   │       └── Constants.php
-│   ├── bootstrap/    
-│   │   └── app.php                                         
-│   ├── config/       
-│   │   ├── app.php
-│   │   ├── auth.php
-│   │   ├── database.php
-│   │   └── services.php
-│   ├── database/                                                    # Laravel migration
+│   │   │   ├── SaleRepository.php
+│   │   │   └── PurchaseRepository.php
+│   │   ├── Traits/
+│   │   │   └── ApiResourceTrait.php
+│   │   └── Policies/ 
+│   │       ├── ProductPolicy.php
+│   │       └── SalePolicy.php
+│   ├── database/                                                   
 │   │   ├── factories/
+│   │   │   ├── UserFactory.php
+│   │   │   ├── ProductFactory.php
+│   │   │   ├── CategoryFactory.php
+│   │   │   ├── CustomerFactory.php
+│   │   │   ├── SupplierFactory.php
+│   │   │   ├── SaleFactory.php
+│   │   │   ├── SaleItemFactory.php
+│   │   │   ├── PurchaseFactory.php
+│   │   │   └── PurchaseItemFactory.php
 │   │   ├── migrations/
-│   │   │   ├── create_users_table.php
-│   │   │   ├── create_categories_table.php
-│   │   │   ├── create_products_table.php
-│   │   │   ├── create_sales_table.php
-│   │   │   ├── create_sale_items_table.php
-│   │   │   ├── create_purcahses_table.php
-│   │   │   ├── create_purcahse_items_table.php
-│   │   │   ├── create_customers_table.php
-│   │   │   └── create_suppliers_table.php
+│   │   │   ├── 2026_03_19_000001_create_users_table.php
+│   │   │   ├── 2026_03_19_000002_create_roles_and_permissions_table.php
+│   │   │   ├── 2026_03_19_000003_create_stores_and_suppliers.php
+│   │   │   ├── 2026_03_19_000004_create_categories_products_table.php
+│   │   │   ├── 2026_03_19_000005_create_customers_table.php
+│   │   │   ├── 2026_03_19_000006_create_sales_and_items_table.php
+│   │   │   ├── 2026_03_19_000007_create_purchases_and_items_table.php
+│   │   │   ├── 2026_03_19_000008_create_payments_table.php
+│   │   │   ├── 2026_03_19_000009_create_stock_movements_table.php
+│   │   │   ├── 2026_03_19_000010_create_audit_logs_table.php
+│   │   │   └── 2026_03_19_000011_create_notifications_table.php
 │   │   └── seeders/
-│   │       ├── DatabaseSeeder.php
 │   │       ├── UserSeeder.php
+│   │       ├── RoleSeeder.php
 │   │       └── ProductSeeder.php
 │   ├── routes/       
 │   │   ├── api.php
@@ -132,12 +130,20 @@ Full-Stack-Store-Management-System(SMS)
 │   │   ├── pages/                                             
 │   │	│	├── auth/
 │   │	│   ├── Dashboard/
-│   │	│   ├── Inventory.js
-│   │	│   ├── Sales.js
-│   │	│   ├── Purchases.js
-│   │	│   ├── Customers.js
-│   │	│   ├── Suppliers.js
-│   │	│   └── 
+│   │	│   ├── products/
+│   │   │   │   ├── ProductList.jsx
+│   │   │   │   ├── AddProduct.jsx
+│   │   │   │   ├── EditProduct.jsx
+│   │   │   │	└── ProductDetails.jsx
+│   │	│   ├── stock/
+│   │   │   │   ├── StockList.jsx 
+│   │   │   │   ├── UpdateStock.jsx
+│   │   │   │   ├── StockHistory.jsx
+│   │   │   │	└── LowStock.jsx
+│   │	│   ├── Orders/
+│   │	│   ├── Customer/
+│   │	│   ├── Suppliers/
+│   │	│   └── Reports/
 │   │   ├── services/                                          # API calls to backend (Node.js/MongoDB)
 │   │	│   ├── api.js                                         # Central Axios or Fetch call request to backend
 │   │	│   ├── authService.js                                
